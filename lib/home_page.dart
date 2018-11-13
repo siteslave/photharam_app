@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photharam_app/result_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,9 +25,12 @@ class _HomePageState extends State<HomePage> {
         ),
         floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Colors.orange,
-          label: Text('ค้นหา'),
+          label: Text('ผลตรวจสุขภาพ'),
           icon: Icon(Icons.search),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => ResultPage()));
+          },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
@@ -76,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 )
               ],
-            )
+            ),
           ],
         ));
   }

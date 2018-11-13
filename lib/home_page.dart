@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:photharam_app/result_page.dart';
 
@@ -104,6 +106,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/home');
+              },
               leading: Icon(Icons.home),
               title: Text(
                 'หน้าหลัก',
@@ -112,6 +118,10 @@ class _HomePageState extends State<HomePage> {
               trailing: Icon(Icons.arrow_forward_ios),
             ),
             ListTile(
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/account');
+              },
               leading: Icon(Icons.person),
               title: Text(
                 'ข้อมูลส่วนตัว',
@@ -120,6 +130,10 @@ class _HomePageState extends State<HomePage> {
               trailing: Icon(Icons.arrow_forward_ios),
             ),
             ListTile(
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/history');
+              },
               leading: Icon(Icons.history),
               title: Text(
                 'ประวัติตรวจสุขภาพ',
@@ -129,11 +143,17 @@ class _HomePageState extends State<HomePage> {
             ),
             Divider(),
             ListTile(
+              onTap: () {
+                exit(0);
+              },
               title: Text(
                 'ออกจากแอปพลิเคชัน',
                 style: TextStyle(fontSize: 20.0),
               ),
-              trailing: Icon(Icons.exit_to_app),
+              trailing: Icon(
+                Icons.exit_to_app,
+                color: Colors.red,
+              ),
             ),
           ],
         ),

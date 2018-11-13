@@ -102,7 +102,39 @@ class _HomePageState extends State<HomePage> {
                 backgroundImage: NetworkImage(
                     'https://randomuser.me/api/portraits/men/89.jpg'),
               ),
-            )
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text(
+                'หน้าหลัก',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text(
+                'ข้อมูลส่วนตัว',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+            ListTile(
+              leading: Icon(Icons.history),
+              title: Text(
+                'ประวัติตรวจสุขภาพ',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+            Divider(),
+            ListTile(
+              title: Text(
+                'ออกจากแอปพลิเคชัน',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              trailing: Icon(Icons.exit_to_app),
+            ),
           ],
         ),
       ),

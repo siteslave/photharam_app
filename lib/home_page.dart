@@ -58,15 +58,24 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Column(
           children: <Widget>[
-            Image(
-              image: AssetImage('assets/images/007.jpg'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                '24 สิงหาคม 2561 นพ.เกรียงศักดิ์ คำอิ่ม ผู้อำนวยการโรงพยาบาลโพธาราม ร่วมกับความศรัทธาของประชาชน. ครอบครัวชาวหนองโพ มารับบริการและมาร่วมบริจาคเงิน เพื่อร่วมพัฒนาบริการของโรงพยาบาล ขออนุโมทนาบุญ กับครอบครัว. และขอกราบขอพระคุณมา ณ ที่นี้',
-                style: TextStyle(fontSize: 20.0),
-              ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Image(
+                    image: AssetImage('assets/images/007.jpg'),
+                    // width: 200.0,
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      '24 สิงหาคม 2561 นพ.เกรียงศักดิ์ คำอิ่ม ผู้อำนวยการโรงพยาบาลโพธาราม ร่วมกับความศรัทธาของประชาชน.',
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ),
+                )
+              ],
             )
           ],
         ));

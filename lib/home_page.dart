@@ -89,11 +89,18 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountEmail: Text('rianpit@gmail.com'),
-              accountName: Text('Satit Rianpi'),
+              accountEmail:
+                  Text('rianpit@gmail.com', style: TextStyle(fontSize: 20.0)),
+              accountName: Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: Text(
+                  'สถิตย์  เรียนพิศ',
+                  style: TextStyle(fontSize: 25.0),
+                ),
+              ),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
-                    'https://randomuser.me/api/portraits/men/88.jpg'),
+                    'https://randomuser.me/api/portraits/men/89.jpg'),
               ),
             )
           ],

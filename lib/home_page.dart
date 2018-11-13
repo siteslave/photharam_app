@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:photharam_app/result_page.dart';
+import 'package:photharam_app/users_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -56,7 +57,10 @@ class _HomePageState extends State<HomePage> {
                   Icons.person,
                   color: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => UsersPage()));
+                },
               ),
             ],
           ),

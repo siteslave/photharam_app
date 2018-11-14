@@ -23,6 +23,20 @@ class _LoginPageState extends State<LoginPage> {
                 Image.asset(
                   'assets/images/moph_logo.png',
                   width: 200.0,
+                ),
+                Text(
+                  'ผลตรวจสุขภาพประจำปี',
+                  style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                Text(
+                  'โรงพยาบาลโพธาราม',
+                  style: TextStyle(
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 )
               ],
             ),

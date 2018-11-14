@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
           Center(
             child: Column(
               children: <Widget>[
-                Divider(
+                SizedBox(
                   height: 80.0,
                 ),
                 Image.asset(
@@ -37,6 +37,39 @@ class _LoginPageState extends State<LoginPage> {
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
+                ),
+                SizedBox(
+                  height: 40.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(width: 0.0)),
+                              labelText: 'เลขบัตรประชาชน',
+                              prefixIcon: Icon(Icons.credit_card)),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(width: 0.0)),
+                              labelText: 'วันเกิด',
+                              prefixIcon: Icon(Icons.calendar_today)),
+                        ),
+                      ],
+                    ),
+                  ),
                 )
               ],
             ),

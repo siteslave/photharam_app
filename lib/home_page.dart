@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:photharam_app/api_provider.dart';
 import 'package:photharam_app/result_page.dart';
 import 'package:photharam_app/users_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,6 +17,43 @@ class _HomePageState extends State<HomePage> {
   String fullname = '';
   String hn = '';
   String token = '';
+
+  List orders = [];
+
+  ApiProvider apiProvider = ApiProvider();
+
+  Future getLabOrders() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String _token = prefs.getString('token');
+      var res = await apiProvider.getLabOrders(_token);
+      var jsonDecode = json.decode(res.body);
+
+      print(res.body);
+
+      if (jsonDecode['ok']) {
+        setState(() {
+          orders = jsonDecode['rows'];
+        });
+      } else {
+        Fluttertoast.showToast(
+            msg: "เกิดข้อผิดพลาด",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIos: 1,
+            bgcolor: "#e74c3c",
+            textcolor: '#ffffff');
+      }
+    } catch (error) {
+      Fluttertoast.showToast(
+          msg: "เกิดข้อผิดพลาด",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIos: 1,
+          bgcolor: "#e74c3c",
+          textcolor: '#ffffff');
+    }
+  }
 
   Future getInfo() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -29,6 +69,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     getInfo();
+    getLabOrders();
   }
 
   @override
@@ -88,29 +129,44 @@ class _HomePageState extends State<HomePage> {
           color: Colors.teal,
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Image(
-                  image: AssetImage('assets/images/007.jpg'),
-                  // width: 200.0,
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    '24 สิงหาคม 2561 นพ.เกรียงศักดิ์ คำอิ่ม ผู้อำนวยการโรงพยาบาลโพธาราม ร่วมกับความศรัทธาของประชาชน.',
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                ),
-              )
-            ],
-          ),
-        ],
+      body: ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          var item = orders[index];
+          return Card(
+            child: ListTile(
+              leading: Icon(Icons.check, color: Colors.green),
+              title: Text('${item['order_date']} ${item['order_time']}'),
+              subtitle: Text(
+                  'ชื่อ LAB: ${item['form_name']}, แผนก: ${item['department']}'),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+          );
+        },
+        itemCount: orders.length,
       ),
+      // body: Column(
+      //   children: <Widget>[
+      //     Row(
+      //       children: <Widget>[
+      //         Expanded(
+      //           child: Image(
+      //             image: AssetImage('assets/images/007.jpg'),
+      //             // width: 200.0,
+      //           ),
+      //         ),
+      //         Expanded(
+      //           child: Padding(
+      //             padding: const EdgeInsets.all(8.0),
+      //             child: Text(
+      //               '24 สิงหาคม 2561 นพ.เกรียงศักดิ์ คำอิ่ม ผู้อำนวยการโรงพยาบาลโพธาราม ร่วมกับความศรัทธาของประชาชน.',
+      //               style: TextStyle(fontSize: 20.0),
+      //             ),
+      //           ),
+      //         )
+      //       ],
+      //     ),
+      //   ],
+      // ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,

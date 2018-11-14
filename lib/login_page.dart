@@ -1,4 +1,7 @@
+import 'dart:convert';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
+import 'package:photharam_app/api_provider.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -6,6 +9,29 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController ctrlUsername = TextEditingController();
+  TextEditingController ctrlPassword = TextEditingController();
+
+  ApiProvider apiProvider = ApiProvider();
+
+  Future doLogin() async {
+    try {
+      var res = await apiProvider.doLogin(ctrlUsername.text, ctrlPassword.text);
+      var jsonDecode = json.decode(res.body);
+      if (jsonDecode['ok']) {
+        Navigator.pushReplacementNamed(context, '/home');
+      } else {
+        Fluttertoast.showToast(
+            msg: "ชื่อผู้ใช้งาน/รหัสผ่านไม่ถูกต้อง",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIos: 1,
+            bgcolor: "#e74c3c",
+            textcolor: '#ffffff');
+      }
+    } catch (error) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: <Widget>[
                     SizedBox(
-                      height: 80.0,
+                      height: 40.0,
                     ),
                     Image.asset(
                       'assets/images/moph_logo.png',
@@ -52,6 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Column(
                           children: <Widget>[
                             TextFormField(
+                              controller: ctrlUsername,
                               decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.white,
@@ -64,6 +91,8 @@ class _LoginPageState extends State<LoginPage> {
                               height: 10.0,
                             ),
                             TextFormField(
+                              obscureText: true,
+                              controller: ctrlPassword,
                               decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.white,
@@ -86,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                                   borderRadius:
                                       new BorderRadius.circular(30.0)),
                               color: Colors.pink,
-                              onPressed: () {},
+                              onPressed: () => doLogin(),
                               child: new Container(
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 20.0,

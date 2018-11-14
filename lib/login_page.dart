@@ -13,6 +13,19 @@ class _LoginPageState extends State<LoginPage> {
         children: <Widget>[
           Container(
             color: Colors.teal,
+          ),
+          Center(
+            child: Column(
+              children: <Widget>[
+                Divider(
+                  height: 80.0,
+                ),
+                Image.asset(
+                  'assets/images/moph_logo.png',
+                  width: 200.0,
+                )
+              ],
+            ),
           )
         ],
       ),

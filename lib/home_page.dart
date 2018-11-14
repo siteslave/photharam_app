@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:photharam_app/result_page.dart';
 import 'package:photharam_app/users_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,6 +11,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String fullname = '';
+  String hn = '';
+  String token = '';
+
+  Future getInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      fullname = prefs.getString('fullname');
+      hn = prefs.getString('hn');
+      token = prefs.getString('token');
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getInfo();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,12 +116,11 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountEmail:
-                  Text('rianpit@gmail.com', style: TextStyle(fontSize: 20.0)),
+              accountEmail: Text('HN: $hn', style: TextStyle(fontSize: 20.0)),
               accountName: Padding(
                 padding: const EdgeInsets.only(top: 30.0),
                 child: Text(
-                  'สถิตย์  เรียนพิศ',
+                  '$fullname',
                   style: TextStyle(fontSize: 25.0),
                 ),
               ),

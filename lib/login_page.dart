@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:photharam_app/api_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -16,15 +17,25 @@ class _LoginPageState extends State<LoginPage> {
 
   Future doLogin() async {
     try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
       var res = await apiProvider.doLogin(ctrlUsername.text, ctrlPassword.text);
       var jsonDecode = json.decode(res.body);
       if (jsonDecode['ok']) {
+        String token = jsonDecode['token'];
+        String fullname = jsonDecode['fullname'];
+        String hn = jsonDecode['hn'];
+
+        await prefs.setString('token', token);
+        await prefs.setString('fullname', fullname);
+        await prefs.setString('hn', hn);
+
         Navigator.pushReplacementNamed(context, '/home');
       } else {
         Fluttertoast.showToast(
             msg: "ชื่อผู้ใช้งาน/รหัสผ่านไม่ถูกต้อง",
             toastLength: Toast.LENGTH_LONG,
-            gravity: ToastGravity.CENTER,
+            gravity: ToastGravity.BOTTOM,
             timeInSecForIos: 1,
             bgcolor: "#e74c3c",
             textcolor: '#ffffff');

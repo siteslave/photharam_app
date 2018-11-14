@@ -11,7 +11,7 @@ class ApiProvider {
   }
 
   Future<http.Response> doLogin(String username, String password) async {
-    return await http.post('$endPoint/login',
+    return await http.post('$endPoint/patient-login',
         body: {'username': username, 'password': password});
   }
 }

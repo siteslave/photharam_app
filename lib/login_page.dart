@@ -22,7 +22,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Image.asset(
                   'assets/images/moph_logo.png',
-                  width: 200.0,
+                  width: 150.0,
+                ),
+                SizedBox(
+                  height: 10.0,
                 ),
                 Text(
                   'ผลตรวจสุขภาพประจำปี',
@@ -39,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.white),
                 ),
                 SizedBox(
-                  height: 40.0,
+                  height: 20.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(30.0),
@@ -69,6 +72,35 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: FlatButton(
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0)),
+                          color: Colors.pink,
+                          onPressed: () {},
+                          child: new Container(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 20.0,
+                              horizontal: 20.0,
+                            ),
+                            child: Text(
+                              "เข้าใช้งานแอปพลิเคชัน",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 )
               ],

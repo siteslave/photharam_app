@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:photharam_app/account_page.dart';
 import 'package:photharam_app/history_page.dart';
 import 'package:photharam_app/home_page.dart';
+import 'package:photharam_app/login_page.dart';
 import 'package:photharam_app/result_page.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class PhotharamApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primaryColor: Colors.teal, fontFamily: 'KoHo'),
       title: 'โพธาราม แอปพลิเคชัน',
-      home: HomePage(),
+      home: LoginPage(),
       routes: <String, WidgetBuilder>{
         '/result': (BuildContext contxt) => ResultPage(),
         '/account': (BuildContext contxt) => AccountPage(),

@@ -22,11 +22,19 @@ dependencies:
   http: any
   fluttertoast: ^2.1.0
   shared_preferences: ^0.4.3
-  
+
 dev_dependencies:
+  flutter_launcher_icons: ^0.6.1
+
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"
+  image_path_android: "assets/icon.png"
+  image_path_ios: "assets/icon.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

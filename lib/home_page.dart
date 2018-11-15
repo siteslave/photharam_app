@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (BuildContext context, int index) {
           var item = orders[index];
           String reportDateTime =
-              '${item[index]['report_date']} ${item[index]['report_time']}';
+              '${item['report_date']} ${item['report_time']}';
           return Card(
             child: ListTile(
               onTap: () {

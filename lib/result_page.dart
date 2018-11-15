@@ -80,7 +80,7 @@ class _ResultPageState extends State<ResultPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'วันที่รายงาน: ${widget.reportDateTime}',
+              'วันที่รายงาน: ${widget.reportDateTime ?? '-'}',
               style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
             ),
           ),

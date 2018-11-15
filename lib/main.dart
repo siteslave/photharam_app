@@ -17,7 +17,6 @@ class PhotharamApp extends StatelessWidget {
       title: 'โพธาราม แอปพลิเคชัน',
       home: LoginPage(),
       routes: <String, WidgetBuilder>{
-        '/result': (BuildContext contxt) => ResultPage(),
         '/account': (BuildContext contxt) => AccountPage(),
         '/history': (BuildContext contxt) => HistoryPage(),
         '/home': (BuildContext contxt) => HomePage(),

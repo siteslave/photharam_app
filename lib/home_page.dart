@@ -134,6 +134,14 @@ class _HomePageState extends State<HomePage> {
           var item = orders[index];
           return Card(
             child: ListTile(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultPage(
+                            item['lab_order_number'].toString(),
+                            item['form_name'])));
+              },
               leading: Icon(Icons.check, color: Colors.green),
               title: Text('${item['order_date']} ${item['order_time']}'),
               subtitle: Text(

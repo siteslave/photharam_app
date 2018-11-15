@@ -23,4 +23,11 @@ class ApiProvider {
       headers: {HttpHeaders.authorizationHeader: "Bearer $token"},
     );
   }
+
+  Future<http.Response> getLabResults(String token, String orderId) async {
+    return await http.get(
+      '$endPoint/labs/result?orderId=$orderId',
+      headers: {HttpHeaders.authorizationHeader: "Bearer $token"},
+    );
+  }
 }

@@ -132,6 +132,8 @@ class _HomePageState extends State<HomePage> {
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
           var item = orders[index];
+          String reportDateTime =
+              '${item[index]['report_date']} ${item[index]['report_time']}';
           return Card(
             child: ListTile(
               onTap: () {
@@ -140,7 +142,8 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(
                         builder: (context) => ResultPage(
                             item['lab_order_number'].toString(),
-                            item['form_name'])));
+                            item['form_name'],
+                            reportDateTime)));
               },
               leading: Icon(Icons.check, color: Colors.green),
               title: Text('${item['order_date']} ${item['order_time']}'),

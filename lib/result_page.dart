@@ -8,8 +8,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ResultPage extends StatefulWidget {
   final String orderId;
   final String formName;
+  final String reportDateTime;
 
-  ResultPage(this.orderId, this.formName);
+  ResultPage(this.orderId, this.formName, [this.reportDateTime]);
 
   @override
   _ResultPageState createState() => _ResultPageState();
@@ -67,8 +68,22 @@ class _ResultPageState extends State<ResultPage> {
         title: Text('ผลตรวจสุขภาพ'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('ชื่อใบ LAB: ${widget.formName}'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'ชื่อใบ LAB: ${widget.formName}',
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'วันที่รายงาน: ${widget.reportDateTime}',
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            ),
+          ),
           Expanded(
             child: ListView.separated(
               itemBuilder: (BuildContext context, int index) {
